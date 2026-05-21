@@ -1,0 +1,260 @@
+/* =====================================================
+   TABLE MAP — Exact match to SEVEN app design (image 2)
+   ===================================================== */
+:root {
+  --table-size-sm: 4%;
+  --table-size-md: 7%;
+  --table-size-l: 14%;
+}
+
+.table-map-wrapper {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.12), transparent 35%), radial-gradient(circle at bottom right, rgba(99, 102, 241, 0.12), transparent 40%), #0d0914;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.65);
+  aspect-ratio: 4 / 5;
+  min-height: 360px;
+}
+
+.table-map-area {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Map title */
+.map-title {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #c8c0d8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+/* =====================
+   TABLE BASE STYLE
+   ===================== */
+.restaurant-table {
+  position: absolute;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+
+/* Numéro de table (quand il devient invisible/noir) */
+.restaurant-table .table-number {
+  color: #ffffff !important;
+}
+
+
+.restaurant-table.available:hover {
+  border-color: rgba(212, 175, 55, 0.85);
+  filter: brightness(1.15);
+  transform: translate(-50%, -50%) scale(1.08);
+  z-index: 10;
+}
+
+/* =====================
+   SHAPES
+   ===================== */
+/* Wide horizontal — top-left big table */
+.restaurant-table.shape-wide-h {
+  width: var(--table-size-l);
+  height: var(--table-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.restaurant-table.shape-wide-v {
+  width: var(--table-size-sm);
+  height: var(--table-size-l);
+  border-radius: var(--radius-sm);
+}
+
+.restaurant-table.shape-round {
+  width: var(--table-size-md);
+  height: var(--table-size-md);
+  border-radius: 50%;
+}
+
+.restaurant-table.shape-oval {
+  width: var(--table-size-l);
+  height: var(--table-size-md);
+  border-radius: 50px;
+}
+
+.restaurant-table.shape-l {
+  width: var(--table-size-md);
+  height: var(--table-size-md);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 40% 40%, 40% 100%, 0 100%);
+  border-radius: var(--radius-sm);
+}
+
+.restaurant-table.shape-u {
+  width: var(--table-size-l);
+  height: var(--table-size-md);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 75% 100%, 75% 40%, 25% 40%, 25% 100%, 0 100%);
+  border-radius: var(--radius-sm);
+}
+
+/* Normal horizontal */
+.restaurant-table.shape-h {
+  width: 10%;
+  height: 3.5%;
+  border-radius: 5px;
+}
+
+/* Vertical rectangle */
+.restaurant-table.shape-v {
+  width: 5%;
+  height: 8%;
+  border-radius: 5px;
+}
+
+/* Small square */
+.restaurant-table.shape-sq {
+  width: 5%;
+  height: 3%;
+  border-radius: 4px;
+}
+
+/* =====================
+   STATUS COLORS
+   ===================== */
+.restaurant-table.available {
+  background-color: transparent;
+  border-color: #4a4458;
+}
+
+.restaurant-table.available {
+  background-color: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.restaurant-table.unavailable {
+  background-color: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.7);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+}
+
+.restaurant-table.selected {
+  border-color: #fff !important;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.7) !important;
+  z-index: 20;
+}
+
+.resize-handles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(31, 41, 55, 0.9);
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.08);
+  cursor: pointer;
+  pointer-events: all;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.resize-handle:hover {
+  transform: scale(1.2);
+  background: #ffffff;
+}
+
+.resize-handle.top {
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.resize-handle.right {
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+}
+
+.resize-handle.bottom {
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.resize-handle.left {
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+}
+
+.restaurant-table .table-number {
+  pointer-events: none;
+}
+
+/* VIP tables — purple */
+.restaurant-table.vip {
+  background-color: #8b3fd4;
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(139, 63, 212, 0.55);
+}
+
+.restaurant-table.vip.selected {
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.8) !important;
+}
+
+/* =====================
+   LEGEND
+   ===================== */
+.table-map-legend {
+  position: absolute;
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  color: #a098b0;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+}
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.libre  { border: 1.5px solid #4a4458; background: transparent; }
+.legend-dot.vip    { background: #8b3fd4; }
+.legend-dot.reservee { background: #e00; }
