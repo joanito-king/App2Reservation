@@ -76,9 +76,17 @@ export function AuthProvider({ children }) {
       email = data.email;
     }
 
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
-    return data;
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        console.error('Supabase signInWithPassword error:', error);
+        throw error;
+      }
+      return data;
+    } catch (e) {
+      console.error('signIn exception:', e);
+      throw e;
+    }
   };
 
   const signUp = async ({ fullName, email, phone, password, adminSecret }) => {

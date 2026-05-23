@@ -32,7 +32,9 @@ export default function Login() {
         window.location.href = '/'; // Force full reload to home
       }
     } catch (err) {
-      toast.error(err.message || 'Identifiants incorrects');
+      console.error('Login error:', err);
+      const message = err?.message || (err?.error && err.error.message) || JSON.stringify(err) || 'Identifiants incorrects';
+      toast.error(message);
     } finally {
       setLoading(false);
     }
